@@ -12,7 +12,7 @@
     "./contract": "./data/contract.json",
     "./recipes": "./data/recipes.json"
   },
-  "files": ["bin", "lib", "src", "dist", "data", "skills", "llms.txt", "README.md", "LICENSE", "NOTICE"],
+  "files": ["bin", "lib", "src", "dist", "data", "skills", "docs", "examples", "site", "index.html", "llms.txt", "README.md", "LICENSE", "NOTICE"],
   "scripts": {
     "build": "node bin/sprig.js build --all --out dist/sprig.css --force",
     "dev": "node scripts/serve.js",
