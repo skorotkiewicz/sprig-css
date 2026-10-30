@@ -1,0 +1,17 @@
+@layer sprig.components {
+  :where(button, [role="button"], input[type="submit"], input[type="button"], input[type="reset"]) {
+    display: inline-flex; align-items: center; justify-content: center; gap: .5rem;
+    min-block-size: 2.75rem; padding: .65rem 1.2rem; border: 1px solid transparent;
+    border-radius: var(--sprig-radius); background: var(--sprig-accent); color: var(--sprig-on-accent);
+    font-weight: 600; line-height: 1.35; text-align: center; text-decoration: none; cursor: pointer;
+  }
+  :where(button, [role="button"], input[type="submit"], input[type="button"], input[type="reset"]):hover { filter: brightness(.92); }
+  :where(button, [role="button"])[data-variant="quiet"] { border-color: var(--sprig-control); background: transparent; color: var(--sprig-text); }
+  :where(button, [role="button"])[data-variant="danger"] { background: var(--sprig-danger); color: var(--sprig-bg); }
+  :where(button, input, textarea, select):disabled, [aria-disabled="true"] { opacity: .55; cursor: not-allowed; }
+  :where(button, [role="button"])[aria-busy="true"]::after {
+    content: ""; inline-size: 1em; block-size: 1em; border: 2px solid currentColor;
+    border-inline-end-color: transparent; border-radius: 50%; animation: sprig-spin .8s linear infinite;
+  }
+  @keyframes sprig-spin { to { transform: rotate(360deg); } }
+}

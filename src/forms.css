@@ -1,0 +1,22 @@
+@layer sprig.forms {
+  form { margin: 0; }
+  :where(label, legend) { display: block; margin-block-end: .4rem; font-weight: 550; }
+  :where(input:not([type="checkbox"], [type="radio"], [type="range"], [type="submit"], [type="button"], [type="reset"]), select, textarea) {
+    inline-size: 100%; min-block-size: 2.75rem; padding: .65rem .85rem;
+    margin-block-end: 1rem; border: 1px solid var(--sprig-control); border-radius: var(--sprig-radius);
+    color: var(--sprig-text); background: var(--sprig-surface);
+  }
+  textarea { min-block-size: 8rem; resize: vertical; }
+  :where(input, textarea)::placeholder { color: var(--sprig-muted); opacity: 1; }
+  :where(input, textarea, select)[aria-invalid="true"] { border-color: var(--sprig-danger); }
+  :where(input, textarea, select)[aria-invalid="true"] + small { color: var(--sprig-danger); }
+  :where(input, textarea, select) + small { display: block; margin-block: -.65rem 1rem; }
+  :where(input[type="checkbox"], input[type="radio"]) { inline-size: 1.15rem; block-size: 1.15rem; margin-inline: 0 .5rem; vertical-align: middle; }
+  label:has(> :where(input[type="checkbox"], input[type="radio"])) { display: flex; align-items: center; gap: .35rem; min-block-size: 2.75rem; font-weight: 400; }
+  input[type="range"] { inline-size: 100%; min-block-size: 2.75rem; }
+  input[type="color"] { padding: .2rem; }
+  input[type="file"] { max-inline-size: 100%; }
+  ::file-selector-button { padding: .3rem .6rem; margin-inline-end: .75rem; border: 1px solid var(--sprig-control); border-radius: .25rem; background: var(--sprig-soft); color: var(--sprig-text); font: inherit; }
+  fieldset { min-inline-size: 0; padding: 0; border: 0; }
+  fieldset legend { margin-block-end: .75rem; }
+}

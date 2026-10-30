@@ -1,0 +1,13 @@
+@layer sprig.components {
+  article { padding: 1.5rem; border: 1px solid var(--sprig-line); border-radius: var(--sprig-radius); background: var(--sprig-surface); }
+  article > :last-child { margin-block-end: 0; }
+  article > header { margin-block-end: 1rem; }
+  article > footer { margin-block-start: 1.5rem; padding-block-start: 1rem; border-block-start: 1px solid var(--sprig-line); }
+  details { padding: 1rem 1.25rem; border: 1px solid var(--sprig-line); border-radius: var(--sprig-radius); background: var(--sprig-surface); }
+  summary { cursor: pointer; font-weight: 600; }
+  details[open] > summary { margin-block-end: 1rem; }
+  details > :last-child { margin-block-end: 0; }
+  [data-callout] { padding: 1rem 1.25rem; border-inline-start: 3px solid var(--sprig-accent); border-radius: .2rem; background: var(--sprig-soft); }
+  [data-callout="danger"] { border-color: var(--sprig-danger); }
+  [data-badge] { display: inline-block; padding: .2rem .6rem; border: 1px solid var(--sprig-line); border-radius: 99rem; background: var(--sprig-soft); color: var(--sprig-text); font-size: .75rem; line-height: 1.5; }
+}

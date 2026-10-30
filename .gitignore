@@ -1,0 +1,6 @@
+# Local reference clones; not part of Sprig.
+/resources/
+node_modules/
+test-results/
+playwright-report/
+*.tgz

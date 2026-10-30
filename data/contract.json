@@ -1,0 +1,46 @@
+{
+  "$schema": "./contract.schema.json",
+  "name": "Sprig",
+  "version": "0.1.0",
+  "stylesheet": "dist/sprig.css",
+  "layers": ["sprig.tokens", "sprig.base", "sprig.layout", "sprig.forms", "sprig.components"],
+  "modules": [
+    { "id": "tokens", "file": "tokens.css", "always": true, "tags": [], "attributes": [] },
+    { "id": "base", "file": "base.css", "always": true, "tags": [], "attributes": [] },
+    { "id": "layout", "file": "layout.css", "always": true, "tags": [], "attributes": [] },
+    { "id": "buttons", "file": "buttons.css", "tags": ["button"], "attributes": ["role=button", "type=submit", "type=button", "type=reset" ] },
+    { "id": "forms", "file": "forms.css", "tags": ["form", "input", "select", "textarea", "fieldset", "label", "legend"], "attributes": [] },
+    { "id": "cards", "file": "cards.css", "tags": ["article", "details", "summary"], "attributes": ["data-callout", "data-badge"] },
+    { "id": "tables", "file": "tables.css", "tags": ["table"], "attributes": [] },
+    { "id": "overlays", "file": "overlays.css", "tags": ["dialog"], "attributes": ["popover"] }
+  ],
+  "classes": {
+    "container": "Centered, bounded content. Body's direct header/main/footer already have this behavior.",
+    "stack": "Vertical rhythm between children; tune --sprig-space.",
+    "cluster": "Wrapping horizontal row; tune --sprig-space.",
+    "grid": "Responsive auto-fit columns; tune --sprig-column.",
+    "overflow": "Horizontal scrolling wrapper, especially for tables. Add tabindex=0 and an accessible label when needed.",
+    "sr-only": "Visually hidden, available to assistive technology; visible on focus.",
+    "skip-link": "First focusable link to the main content."
+  },
+  "attributes": {
+    "data-theme": ["light", "dark"],
+    "data-variant": ["quiet", "danger"],
+    "data-callout": ["note", "danger"],
+    "data-badge": [""],
+    "data-anchor": [""],
+    "data-anchored": [""]
+  },
+  "tokens": ["bg", "surface", "soft", "text", "muted", "line", "control", "accent", "on-accent", "danger", "focus", "radius", "space", "width", "font", "mono"],
+  "rules": [
+    "Use semantic HTML before adding classes.",
+    "Use real buttons for actions and links for navigation.",
+    "Every form control needs a persistent accessible label.",
+    "Describe errors in text and connect them with aria-describedby.",
+    "Open dialogs with showModal(), not an open attribute toggle.",
+    "CSS does not implement behavior, validation, focus management, or application state.",
+    "aria-disabled is not behavior: prevent activation in application code or prefer native disabled.",
+    "For dynamic templates use the full stylesheet or explicitly include runtime modules.",
+    "Override tokens in unlayered application CSS, never edit generated CSS."
+  ]
+}

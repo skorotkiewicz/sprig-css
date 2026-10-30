@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>Your next good idea — Sprig starter</title>
+  <link rel="stylesheet" href="../dist/sprig.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header><nav aria-label="Main navigation"><a href="../index.html"><strong>sprig / starter</strong></a><ul><li><a href="../docs/guide.html">Field guide</a></li></ul></nav></header>
+  <main id="main">
+    <section aria-labelledby="intro"><h1 id="intro">Hello, good things.</h1><p>Real HTML. A little CSS. Your next good idea.</p></section>
+    <section class="grid" aria-label="Starter examples">
+      <article><h2>Start with meaning.</h2><p>This card is an <code>&lt;article&gt;</code>. The grid is one of just seven layout and accessibility classes.</p><details><summary>Make it yours</summary><p>Set <code>--sprig-accent</code> and <code>--sprig-on-accent</code> in your application stylesheet. Check contrast in both themes.</p></details></article>
+      <article><h2>A simple form</h2><form id="starter-form"><label for="name">Your name</label><input id="name" name="name" autocomplete="name" placeholder="Garden enthusiast" required><button type="submit">Try it out</button><p id="status" role="status"></p></form></article>
+    </section>
+  </main>
+  <footer><small>No data is sent. No JavaScript is needed for styling. This example uses a few lines to handle its demo form.</small></footer>
+  <script>
+    document.querySelector('#starter-form').addEventListener('submit', event => {
+      event.preventDefault();
+      document.querySelector('#status').textContent = 'Hello! Your page is ready to grow. Nothing was sent.';
+    });
+  </script>
+</body>
+</html>

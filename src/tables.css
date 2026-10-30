@@ -1,0 +1,7 @@
+@layer sprig.components {
+  table { inline-size: 100%; border-collapse: collapse; text-align: start; font-variant-numeric: tabular-nums; }
+  caption { margin-block-end: 1rem; text-align: start; font-weight: 600; }
+  :where(th, td) { padding: .85rem 1rem; border-block-end: 1px solid var(--sprig-line); }
+  th { color: var(--sprig-muted); font-size: .875rem; font-weight: 550; }
+  thead { background: var(--sprig-soft); }
+}

@@ -1,0 +1,28 @@
+{
+  "name": "@sprig-kit/css",
+  "version": "0.1.0",
+  "description": "Semantic CSS and a shared field guide for humans and coding agents.",
+  "type": "module",
+  "license": "MIT",
+  "engines": { "node": ">=22" },
+  "bin": { "sprig": "./bin/sprig.js" },
+  "exports": {
+    ".": "./dist/sprig.css",
+    "./css": "./dist/sprig.css",
+    "./contract": "./data/contract.json",
+    "./recipes": "./data/recipes.json"
+  },
+  "files": ["bin", "lib", "src", "dist", "data", "skills", "llms.txt", "README.md", "LICENSE", "NOTICE"],
+  "scripts": {
+    "build": "node bin/sprig.js build --all --out dist/sprig.css --force",
+    "dev": "node scripts/serve.js",
+    "test": "node --test test/*.test.js",
+    "test:browser": "playwright test",
+    "check": "npm run build && npm test && node bin/sprig.js check examples/starter.html",
+    "prepack": "npm run check"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "^4.10.2",
+    "@playwright/test": "^1.58.0"
+  }
+}

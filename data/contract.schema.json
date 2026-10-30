@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Sprig contract",
+  "type": "object",
+  "required": ["name", "version", "stylesheet", "layers", "modules", "classes", "attributes", "tokens", "rules"],
+  "additionalProperties": false,
+  "properties": {
+    "$schema": { "type": "string" },
+    "name": { "type": "string" },
+    "version": { "type": "string" },
+    "stylesheet": { "type": "string" },
+    "layers": { "type": "array", "items": { "type": "string" }, "uniqueItems": true },
+    "modules": { "type": "array", "items": {
+      "type": "object", "required": ["id", "file", "tags", "attributes"], "additionalProperties": false,
+      "properties": {
+        "id": { "type": "string", "pattern": "^[a-z]+$" },
+        "file": { "type": "string", "pattern": "^[a-z]+\\.css$" },
+        "always": { "type": "boolean" },
+        "tags": { "type": "array", "items": { "type": "string" } },
+        "attributes": { "type": "array", "items": { "type": "string" } }
+      }
+    } },
+    "classes": { "type": "object", "additionalProperties": { "type": "string" } },
+    "attributes": { "type": "object", "additionalProperties": { "type": "array", "items": { "type": "string" } } },
+    "tokens": { "type": "array", "items": { "type": "string" }, "uniqueItems": true },
+    "rules": { "type": "array", "items": { "type": "string" } }
+  }
+}

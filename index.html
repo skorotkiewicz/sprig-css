@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <meta name="description" content="Sprig: semantic CSS and a shared field guide for humans and coding agents. No runtime. No class soup. Just good HTML.">
+  <title>Sprig — Good HTML. Great by nature.</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='10' fill='%232d633b'/%3E%3Cpath d='M20 31V16M20 24C7 25 8 11 8 11s14-1 12 13M20 19C20 5 33 8 33 8s2 13-13 11' fill='none' stroke='%23d9eccb' stroke-width='2.5'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="dist/sprig.css">
+  <link rel="stylesheet" href="site/style.css">
+  <script src="site/app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <nav aria-label="Main navigation">
+      <a class="wordmark" href="./" aria-label="Sprig home"><svg aria-hidden="true" width="28" height="32" viewBox="0 0 28 32"><path d="M14 29V12M14 22C2 22 3 9 3 9s12 0 11 13M14 16C14 3 26 4 26 4s1 12-12 12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>sprig<span class="version">0.1 / a fresh start</span></a>
+      <ul>
+        <li><a href="#recipes">The playground</a></li>
+        <li><a href="docs/guide.html">Field guide <span aria-hidden="true">↗</span></a></li>
+        <li><button class="theme-toggle" id="theme-toggle" type="button" aria-label="Color theme: system. Switch to light.">Theme: system</button></li>
+      </ul>
+    </nav>
+  </header>
+  <main id="main">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="seed-dot" aria-hidden="true"></span> A new leaf for semantic CSS</p>
+        <h1 id="hero-title">Good HTML.<br>Great <em>by nature.</em></h1>
+        <p class="lede">A small stylesheet. A shared set of good instincts.<br class="wide-only"> Beautiful interfaces for people <em>and</em> the agents helping them build.</p>
+        <div class="cluster hero-actions"><a class="action" href="#start">Plant your first page <span aria-hidden="true">↗</span></a><a class="text-link" href="#recipes">Take a little look around <span aria-hidden="true">↓</span></a></div>
+        <p class="hero-footnote">Plain CSS. Native HTML. Zero runtime dependencies.</p>
+      </div>
+      <div class="specimen-wrap">
+        <div class="specimen-note"><span aria-hidden="true">↙</span> This is the framework. Not a mockup.</div>
+        <article class="specimen">
+          <header><div class="cluster specimen-heading"><span class="mini-leaf" aria-hidden="true">✳</span><span class="eyebrow">The little things club</span><span data-badge>Example 001</span></div><h2>Make room<br>for good things.</h2><p>A tiny form. All the essentials.<br>Not a utility class in sight.</p></header>
+          <form id="garden-form">
+            <label for="garden-email">Your email</label>
+            <input id="garden-email" name="email" type="email" placeholder="you@somewhere.nice" autocomplete="email" required aria-describedby="garden-help">
+            <small id="garden-help">A local demo. Your email goes absolutely nowhere.</small>
+            <label><input type="checkbox" name="slow"> I believe the web could use a little less noise.</label>
+            <button type="submit">Count me in <span aria-hidden="true">↗</span></button>
+            <p id="garden-status" role="status"></p>
+          </form>
+          <footer><span class="code-note">&lt;form&gt; + &lt;label&gt; + &lt;input&gt; + &lt;button&gt;</span></footer>
+        </article>
+        <span class="specimen-stamp" aria-hidden="true">LESS,<br>BUT LOVELIER.</span>
+      </div>
+    </section>
+
+    <section class="principles" id="why" aria-label="The Sprig philosophy">
+      <div><span class="section-index">01 / HUMAN FIRST</span><h3>HTML is the API.</h3><p>Use the element you meant. It should already look like it belongs.</p></div>
+      <div><span class="section-index">02 / AGENT FRIENDLY</span><h3>Less guessing. Better making.</h3><p>A small contract and searchable recipes. Not another prompt-sized encyclopedia.</p></div>
+      <div><span class="section-index">03 / BROWSER NATIVE</span><h3>Let the platform cook.</h3><p>Real forms, real dialogs, real disclosure. The browser has good bones.</p></div>
+    </section>
+
+    <section id="recipes" class="playground" aria-labelledby="playground-title">
+      <div class="section-heading"><div><p class="eyebrow">The living specimen sheet</p><h2 id="playground-title">Small ingredients.<br>Lovely possibilities.</h2></div><p>Touch the buttons. Open the details.<br>This little garden is very much alive.</p></div>
+      <div class="grid specimen-grid">
+        <article>
+          <header><span class="section-index">01 / DISCLOSURE</span><h3>A little more, when you need it.</h3></header>
+          <details><summary>Does this need JavaScript?</summary><p>Not this bit. A <code>&lt;details&gt;</code> element brings its own keyboard and open/close behavior. We just dressed it nicely.</p></details>
+          <details><summary>Can I make it my own?</summary><p>Absolutely. Set a few <code>--sprig-*</code> properties in your own CSS. No Sass rebuild, no theme maze.</p></details>
+          <footer><code>&lt;details&gt; + &lt;summary&gt;</code></footer>
+        </article>
+        <article>
+          <header><span class="section-index">02 / DIALOG</span><h3>A moment of focus.</h3></header>
+          <p>A proper modal. Focus containment, Escape to close, and a backdrop—courtesy of your browser.</p>
+          <button type="button" data-variant="quiet" id="open-dialog">Open a little window <span aria-hidden="true">↗</span></button>
+          <footer><code>&lt;dialog&gt; + showModal()</code></footer>
+        </article>
+        <article>
+          <header><span class="section-index">03 / POPOVER</span><h3>Something on the side.</h3></header>
+          <p>A small, dismissible note. No positioning library hiding in the potting shed.</p>
+          <button type="button" data-variant="quiet" popovertarget="garden-note" id="popover-trigger">A small observation <span aria-hidden="true">+</span></button>
+          <div popover id="garden-note"><strong>A little breathing room.</strong><p>Sometimes the best design decision is leaving something out.</p><button type="button" popovertarget="garden-note" popovertargetaction="hide" data-variant="quiet">Got it</button></div>
+          <details id="popover-fallback" hidden><summary>A small observation</summary><p>Sometimes the best design decision is leaving something out.</p></details>
+          <footer><code>[popover] + [popovertarget]</code></footer>
+        </article>
+      </div>
+      <dialog id="garden-dialog" aria-labelledby="dialog-title" aria-describedby="dialog-description"><p class="eyebrow">A quiet moment</p><h2 id="dialog-title">Hello, breathing room.</h2><p id="dialog-description">This is a native dialog. Try pressing Escape, or use the button below. Your focus will return to where you left off.</p><form method="dialog"><button type="submit" autofocus>Back to the garden <span aria-hidden="true">↗</span></button></form></dialog>
+    </section>
+
+    <section class="agent-section" aria-labelledby="agent-title">
+      <div><p class="eyebrow">For the other pair of hands</p><h2 id="agent-title">Your agent deserves<br>a field guide.<br><em>Not a guessing game.</em></h2><p>Sprig carries its own instructions: what exists, when to use it, and what to check. Human-readable. Machine-readable. Same garden.</p><a class="text-link" href="skills/sprig/SKILL.md">Meet the skill <span aria-hidden="true">↗</span></a></div>
+      <div class="terminal"><div class="terminal-header"><span class="terminal-light" aria-hidden="true"></span> a shared vocabulary <span>local / no API key</span></div><pre><code><span class="terminal-comment"># Find a pattern, not a new framework</span>
+<span class="terminal-prompt">$</span> node bin/sprig.js recipe "contact form"
+
+<span class="terminal-comment"># Read the exact styling vocabulary</span>
+<span class="terminal-prompt">$</span> node bin/sprig.js contract
+
+<span class="terminal-comment"># Catch a few common HTML mistakes</span>
+<span class="terminal-prompt">$</span> node bin/sprig.js check page.html
+
+<span class="terminal-comment"># Pack only the modules your HTML uses</span>
+<span class="terminal-prompt">$</span> node bin/sprig.js build --html page.html</code></pre><p class="terminal-footer">Deterministic tools. No model calls. Your ideas stay yours.</p></div>
+    </section>
+
+    <section id="start" class="getting-started" aria-labelledby="start-title">
+      <div><p class="eyebrow">One small beginning</p><h2 id="start-title">Just add HTML.</h2><p>Copy <a href="dist/sprig.css" download>sprig.css</a> beside your page. Link it.<br>Then build something that feels like you.</p><div class="cluster"><a class="action" href="examples/starter.html">Open the starter <span aria-hidden="true">↗</span></a><a class="text-link" href="docs/guide.html">Read the field guide <span aria-hidden="true">↗</span></a></div></div>
+      <div class="code-card"><div class="code-card-heading"><span>your-next-good-idea.html</span><button id="copy-starter" type="button" data-variant="quiet">Copy</button></div><pre><code id="starter-code">&lt;link rel="stylesheet" href="sprig.css"&gt;
+
+&lt;main&gt;
+  &lt;h1&gt;Hello, good things.&lt;/h1&gt;
+  &lt;p&gt;Start small. Make it yours.&lt;/p&gt;
+  &lt;button type="button"&gt;Let's grow&lt;/button&gt;
+&lt;/main&gt;</code></pre><p id="copy-status" role="status"></p></div>
+    </section>
+    <aside class="roots"><span aria-hidden="true">↳</span><p>A new leaf, not a new coat of paint. Inspired by Pico’s belief in semantic HTML.<br>Independently rewritten, with thanks. Not affiliated with Pico CSS.</p><a href="docs/decisions.md">Why we built it this way <span aria-hidden="true">↗</span></a></aside>
+  </main>
+  <footer class="site-footer"><a class="wordmark" href="./">sprig<span class="footer-flower" aria-hidden="true">✳</span></a><p>A little structure. A lot of possibility.</p><div><a href="LICENSE">MIT licensed</a><span aria-hidden="true"> / </span><a href="llms.txt">llms.txt</a><span aria-hidden="true"> / </span><a href="data/contract.json">The contract</a></div></footer>
+</body>
+</html>
