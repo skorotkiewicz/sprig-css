@@ -1,0 +1,32 @@
+# Sprig
+
+> Semantic CSS and a shared field guide for humans and coding agents. Good HTML, fewer guesses.
+
+Local preview release 0.1.0. No registry publication is implied. No AI service or API key is required.
+
+## Start here
+
+- [Agent skill](skills/sprig/SKILL.md): short, progressive implementation workflow.
+- [Contract](data/contract.json): authoritative public classes, attributes, tokens, layers, and module triggers.
+- [Contract schema](data/contract.schema.json): JSON Schema for the vocabulary.
+- [Recipes](data/recipes.json): eight searchable patterns with HTML, explicit JavaScript, and checks.
+- [Field guide](docs/guide.html): human-readable API and honest support boundaries.
+- [Starter](examples/starter.html): complete working page.
+- [Decisions](docs/decisions.md): rationale, tradeoffs, and unfinished work.
+- [Migration](docs/migration.md): not a drop-in Pico replacement.
+
+## Repository commands
+
+Node 22+; run from the repository root. CSS consumers need no Node.
+
+    node bin/sprig.js recipe "contact form" --json
+    node bin/sprig.js contract
+    node bin/sprig.js build --all --out sprig.css
+    node bin/sprig.js build --html page.html --include overlays --out page.css
+    node bin/sprig.js check page.html --json
+
+Read the contract before inventing classes or attributes. Use semantic elements and native behavior. Keep application design choices consistent. Override tokens in unlayered application CSS. Never turn a navigation link into a button role just to style it.
+
+Build selects whole modules from static HTML; for runtime-generated content use --all or explicit --include. Existing outputs require --force. check is limited static lint, not an HTML validator or accessibility audit. Exit codes: 0 completed, 1 findings, 2 invocation/I/O errors.
+
+Verify real keyboard navigation, labels, modal focus/closing, responsive layout, light/dark themes, reduced motion, and error/loading/empty states. Automated checks do not establish WCAG conformance. Do not report a clean static lint as proof of accessibility.

@@ -41,7 +41,8 @@
             <input id="garden-email" name="email" type="email" placeholder="you@somewhere.nice" autocomplete="email" required aria-describedby="garden-help">
             <small id="garden-help">A local demo. Your email goes absolutely nowhere.</small>
             <label><input type="checkbox" name="slow"> I believe the web could use a little less noise.</label>
-            <button type="submit">Count me in <span aria-hidden="true">↗</span></button>
+            <button type="submit" id="garden-submit" disabled>Count me in <span aria-hidden="true">↗</span></button>
+            <noscript><p>This local form demo needs JavaScript. Nothing is sent.</p></noscript>
             <p id="garden-status" role="status"></p>
           </form>
           <footer><span class="code-note">&lt;form&gt; + &lt;label&gt; + &lt;input&gt; + &lt;button&gt;</span></footer>
@@ -68,14 +69,14 @@
         <article>
           <header><span class="section-index">02 / DIALOG</span><h3>A moment of focus.</h3></header>
           <p>A proper modal. Focus containment, Escape to close, and a backdrop—courtesy of your browser.</p>
-          <button type="button" data-variant="quiet" id="open-dialog">Open a little window <span aria-hidden="true">↗</span></button>
+          <button type="button" data-variant="quiet" id="open-dialog" disabled>Open a little window <span aria-hidden="true">↗</span></button>
           <footer><code>&lt;dialog&gt; + showModal()</code></footer>
         </article>
         <article>
           <header><span class="section-index">03 / POPOVER</span><h3>Something on the side.</h3></header>
           <p>A small, dismissible note. No positioning library hiding in the potting shed.</p>
-          <button type="button" data-variant="quiet" popovertarget="garden-note" id="popover-trigger">A small observation <span aria-hidden="true">+</span></button>
-          <div popover id="garden-note"><strong>A little breathing room.</strong><p>Sometimes the best design decision is leaving something out.</p><button type="button" popovertarget="garden-note" popovertargetaction="hide" data-variant="quiet">Got it</button></div>
+          <button type="button" data-variant="quiet" popovertarget="garden-note" id="popover-trigger" hidden>A small observation <span aria-hidden="true">+</span></button>
+          <div popover id="garden-note" hidden><strong>A little breathing room.</strong><p>Sometimes the best design decision is leaving something out.</p><button type="button" popovertarget="garden-note" popovertargetaction="hide" data-variant="quiet">Got it</button></div>
           <details id="popover-fallback" hidden><summary>A small observation</summary><p>Sometimes the best design decision is leaving something out.</p></details>
           <footer><code>[popover] + [popovertarget]</code></footer>
         </article>

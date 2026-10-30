@@ -1,0 +1,13 @@
+Sprig is an independently implemented project inspired by Pico CSS's
+semantic-HTML philosophy and by the knowledge/retrieval/skill structure of
+UI/UX Design Pro Skill. No source stylesheet, dataset, logo, or bundled
+asset from either reference project is distributed as part of Sprig.
+
+Pico CSS: https://github.com/picocss/pico
+Copyright (c) 2019-2024 Pico. MIT licensed.
+Pico's name and logo are not covered by its MIT license; Sprig uses its own
+name and artwork and is not affiliated with or endorsed by Pico.
+
+UI/UX Design Pro Skill: https://github.com/saifyxpro/ui-ux-design-pro-skill
+Copyright (c) 2025 saifyxpro. MIT licensed.
+Architectural inspiration only; no dataset, script, or skill text copied.
