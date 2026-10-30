@@ -4,8 +4,9 @@
   dialog > :last-child { margin-block-end: 0; }
   /* Only open popovers enter layout. Do not override the UA's hidden state. */
   [popover] { max-inline-size: min(24rem, calc(100% - 2rem)); padding: 1.25rem; border: 1px solid var(--sprig-line); border-radius: var(--sprig-radius); background: var(--sprig-surface); color: var(--sprig-text); box-shadow: 0 .75rem 3rem rgb(0 0 0 / .15); }
-  @supports (position-area: bottom) and (anchor-name: --sprig-trigger) {
-    [data-anchor] { anchor-name: --sprig-trigger; }
-    [popover][data-anchored] { position-anchor: --sprig-trigger; position-area: bottom span-inline-end; position-try-fallbacks: flip-block, flip-inline; margin: .5rem; }
+  @supports (position-area: bottom) and (anchor-scope: --sprig-trigger) {
+    [data-anchor-scope] { anchor-scope: --sprig-trigger; }
+    [data-anchor-scope] [data-anchor] { anchor-name: --sprig-trigger; }
+    [data-anchor-scope] [popover][data-anchored] { position-anchor: --sprig-trigger; position-area: bottom span-inline-end; position-try-fallbacks: flip-block, flip-inline; margin: .5rem; }
   }
 }

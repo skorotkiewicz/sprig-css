@@ -28,6 +28,7 @@
     "data-variant": ["quiet", "danger"],
     "data-callout": ["note", "danger"],
     "data-badge": [""],
+    "data-anchor-scope": [""],
     "data-anchor": [""],
     "data-anchored": [""]
   },

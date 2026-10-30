@@ -1,0 +1,11 @@
+.guide { max-inline-size: 54rem; }
+.guide > header { padding-block: 4rem 2rem; }
+.guide > header h1 { font-size: clamp(3rem, 8vw, 5rem); }
+.guide > header > p:last-child { color: var(--sprig-muted); font-size: 1.1rem; }
+.guide-toc { border-block: 1px solid var(--sprig-line); padding-block: 1rem; margin-block-end: 3rem; }
+.guide-toc ul { gap: 1.25rem; font-size: .85rem; }
+.guide section { scroll-margin-block-start: 1rem; }
+.guide h2 { margin-block-end: 1.5rem; }
+.guide h3 { font-size: 1.15rem; }
+.guide pre { font-size: .8rem; }
+.guide th { white-space: nowrap; }

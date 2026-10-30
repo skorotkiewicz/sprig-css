@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>The field guide — Sprig</title>
+  <link rel="stylesheet" href="../dist/sprig.css">
+  <link rel="stylesheet" href="../site/style.css">
+  <link rel="stylesheet" href="guide.css">
+  <script src="../site/app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header"><nav aria-label="Main navigation"><a class="wordmark" href="../index.html">sprig <span class="version">the field guide</span></a><ul><li><a href="../index.html#recipes">Playground</a></li><li><button class="theme-toggle" id="theme-toggle" type="button" aria-label="Color theme: system. Switch to light.">Theme: system</button></li></ul></nav></header>
+  <main id="main" class="guide">
+    <header><p class="eyebrow">A small map of the garden</p><h1>The field guide.</h1><p>Meaningful HTML first. A little vocabulary when you need it.<br>No runtime, no account, no magic incantation.</p></header>
+    <nav class="guide-toc" aria-label="On this page"><ul><li><a href="#quickstart">Start</a></li><li><a href="#layout">Layout</a></li><li><a href="#components">Components</a></li><li><a href="#themes">Themes</a></li><li><a href="#tools">Tools</a></li><li><a href="#agents">Agents</a></li><li><a href="#support">Support</a></li></ul></nav>
+    <section id="quickstart"><h2>One stylesheet. Your HTML.</h2><p>Copy <a href="../dist/sprig.css" download>dist/sprig.css</a> beside your HTML, then use the snippet below. No package installation is needed to use the CSS. This is a local preview release; the package name is not a published-install promise.</p><pre><code>&lt;!doctype html&gt;
+&lt;html lang="en"&gt;
+  &lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;
+    &lt;meta name="color-scheme" content="light dark"&gt;
+    &lt;link rel="stylesheet" href="sprig.css"&gt;
+    &lt;title&gt;A good beginning&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;main&gt;
+      &lt;h1&gt;Hello, good things.&lt;/h1&gt;
+      &lt;p&gt;Start small. Make it yours.&lt;/p&gt;
+    &lt;/main&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre><p><a href="../examples/starter.html">Open the working starter →</a></p><p>Sprig is an opinionated, global starting point for new pages—not a scoped widget library. It is independently rewritten, not drop-in Pico compatibility. Change <code>--pico-*</code> overrides to Sprig tokens and review old custom classes. See the <a href="migration.md">migration notes</a>.</p></section>
+    <section id="layout"><h2>Seven classes. That’s the list.</h2><p>Your body’s direct <code>header</code>, <code>main</code>, and <code>footer</code> are centered, bounded containers automatically.</p><div class="overflow" tabindex="0" role="region" aria-label="Layout class reference"><table><caption>Sprig’s entire class vocabulary</caption><thead><tr><th scope="col">Class</th><th scope="col">What it does</th></tr></thead><tbody><tr><th scope="row"><code>container</code></th><td>A centered container anywhere; tune <code>--sprig-width</code>.</td></tr><tr><th scope="row"><code>stack</code></th><td>Vertical spacing between children; tune <code>--sprig-space</code>.</td></tr><tr><th scope="row"><code>cluster</code></th><td>A wrapping, vertically aligned horizontal row.</td></tr><tr><th scope="row"><code>grid</code></th><td>Auto-fit columns; tune <code>--sprig-column</code> (default 16rem).</td></tr><tr><th scope="row"><code>overflow</code></th><td>A horizontal scrolling wrapper. Make keyboard-scrollable regions focusable and name them.</td></tr><tr><th scope="row"><code>sr-only</code></th><td>Visually hidden, available to assistive technology. Revealed on focus.</td></tr><tr><th scope="row"><code>skip-link</code></th><td>A skip-navigation link, revealed when focused. Point it at your main content.</td></tr></tbody></table></div><pre><code>&lt;section class="grid" style="--sprig-column: 20rem"&gt;
+  &lt;article&gt;&lt;h2&gt;A thought&lt;/h2&gt;&lt;p&gt;Room to grow.&lt;/p&gt;&lt;/article&gt;
+  &lt;article&gt;&lt;h2&gt;Another&lt;/h2&gt;&lt;p&gt;No breakpoint needed.&lt;/p&gt;&lt;/article&gt;
+&lt;/section&gt;</code></pre></section>
+    <section id="components"><h2>Let the elements do their thing.</h2><div class="stack"><article><h3>Forms and actions</h3><p>Inputs, textareas, and selects receive full-width styling. Checkboxes and radios stay native. Use a persistent label, explicit button types, <code>autocomplete</code> where appropriate, and help/error text connected with <code>aria-describedby</code>.</p><p>Buttons support <code>data-variant="quiet"</code> and <code>data-variant="danger"</code>. Set <code>aria-busy="true"</code> for a loading indicator, keep the action’s text, and prevent duplicate work in application code. Native <code>disabled</code> prevents interaction; <code>aria-disabled</code> alone does not.</p><p><strong>Navigation is still a link.</strong> Do not change a link to <code>role="button"</code> just to style it. Add an application class if a navigation CTA needs a filled treatment.</p></article><article><h3>Cards and disclosures</h3><p>An <code>article</code> gets a surface, a border, and padding. Its direct header/footer get spacing. A native <code>details</code> with a <code>summary</code> is a complete disclosure; no JavaScript required. Use <code>data-callout="note"</code> or <code>"danger"</code> for an aside, and <code>data-badge</code> for a small label.</p><aside data-callout="note">Color alone is never an error message. Say what happened and how to fix it.</aside></article><article><h3>Tables</h3><p>Use a caption, header cells, and <code>scope="col"</code>/<code>scope="row"</code>. Put wide tables in a named, focusable <code>.overflow</code> region; do not squeeze away their relationships.</p></article><article><h3>Dialogs and popovers</h3><p>Give dialogs an accessible name. Call <code>showModal()</code> to get modal focus behavior; toggling the <code>open</code> attribute is not equivalent. Provide a visible close action (a form with <code>method="dialog"</code> works) and test Escape and focus return.</p><p>Native popovers use <code>popover</code> and <code>popovertarget</code>. They are nonmodal: don’t use them where a modal is required. Older browsers need an explicit fallback such as <code>details</code>; CSS cannot polyfill behavior.</p><p>Optional anchor positioning: wrap one trigger/popover pair in <code>data-anchor-scope</code>, put <code>data-anchor</code> on the trigger and <code>data-anchored</code> on the popover. Browsers supporting both anchor positioning and scoping place it near the trigger; others keep the native centered popover. Each pair needs its own wrapper.</p></article></div></section>
+    <section id="themes"><h2>A theme is a few decisions.</h2><p>The OS preference is the default. Set <code>data-theme="light"</code> or <code>"dark"</code> on <code>html</code> to override it. Remove the attribute to return to automatic. Sprig’s stylesheet needs no JavaScript; only a user-facing theme toggle needs state handling.</p><pre><code>/* Your application CSS, loaded after Sprig. */
+:root {
+  --sprig-accent: #3b526f;
+  --sprig-on-accent: #ffffff;
+  --sprig-radius: .25rem;
+  --sprig-width: 68rem;
+}
+:root[data-theme="dark"] {
+  --sprig-accent: #b7cee8;
+  --sprig-on-accent: #192736;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --sprig-accent: #b7cee8;
+    --sprig-on-accent: #192736;
+  }
+}</code></pre><p>Use unlayered application CSS so your overrides win without specificity games. The ordered layers are <code>sprig.tokens</code>, <code>sprig.base</code>, <code>sprig.layout</code>, <code>sprig.forms</code>, and <code>sprig.components</code>.</p><p>The semantic color roles are <code>bg</code>, <code>surface</code>, <code>soft</code>, <code>text</code>, <code>muted</code>, <code>line</code>, <code>control</code>, <code>accent</code>, <code>on-accent</code>, <code>danger</code>, and <code>focus</code>; all have the <code>--sprig-</code> prefix. Layout/type tokens are <code>radius</code>, <code>space</code>, <code>width</code>, <code>font</code>, and <code>mono</code>. Change foreground/background pairs together and retest contrast in both themes. <code>line</code> is decorative; <code>control</code> is the stronger boundary for interactive controls.</p></section>
+    <section id="tools"><h2>Small tools. Honest boundaries.</h2><p>Development tools require Node 22 or newer. Run these from the repository root, or use the equivalent CLI bin from an installed local tarball. CSS users need no Node.</p><pre><code># Full, deterministic build
+node bin/sprig.js build --all --out sprig.css
+
+# Union of modules used by static pages
+node bin/sprig.js build --html index.html --html about.html --out pages.css
+
+# Keep modules needed by runtime-rendered content
+node bin/sprig.js build --html index.html --include forms,overlays
+
+# Find patterns and read the vocabulary
+node bin/sprig.js recipe "accessible contact form" --json
+node bin/sprig.js contract
+
+# A few common mistakes, not an accessibility certification
+node bin/sprig.js check examples/starter.html --json</code></pre><p>The packer selects whole modules: tokens, base, and layout are always kept; buttons, forms, cards, tables, and overlays are selected by static tags/attributes. It does not execute templates, understand JSX, follow JavaScript, or purge selectors. For those cases, use the full CSS or explicit <code>--include</code>. There is no minifier or native compiler in this release.</p><p>Existing output files are protected. Use <code>--force</code> only when you intend to overwrite. Builds refuse to overwrite their HTML inputs. The static checker catches missing labels/alt attributes, missing ID references, duplicate IDs, unnamed dialogs, and a few action pitfalls. It can miss real problems and misread malformed/templates markup. It is not a parser-grade HTML validator or a screen reader.</p><p>Exit codes: <code>0</code> completed, <code>1</code> lint findings, <code>2</code> invocation/file errors. JSON reports go to stdout; invocation errors go to stderr.</p></section>
+    <section id="agents"><h2>Give your collaborator a map.</h2><p>The <a href="../skills/sprig/SKILL.md">Sprig skill</a> is a small, provider-independent workflow. Read the <a href="../data/contract.json">contract</a>, retrieve a relevant <a href="../data/recipes.json">recipe</a>, implement, then verify the actual interface. The <a href="../llms.txt">llms.txt entry point</a> points to the same sources humans use.</p><p>No API key, model call, telemetry, generated “design intelligence,” or hidden network request. Copy the skill into your agent’s supported skills directory if you want to install it; nothing writes to your harness automatically.</p><pre><code>Build this page with Sprig. First read skills/sprig/SKILL.md
+and data/contract.json. Reuse an appropriate recipe.
+Use semantic HTML, preserve the project's existing design,
+and check keyboard, mobile, light/dark, and error states.</code></pre></section>
+    <section id="support"><h2>Good bones, realistic promises.</h2><p>Target: current stable Chromium, Firefox, and Safari, with cascade layers and modern selectors. The default palette includes hex fallbacks before OKLCH enhancement. Unsupported text balancing and anchor positioning fall back harmlessly. Popover behavior requires a supporting browser or an explicit application fallback. No IE or pre-cascade-layer support is promised.</p><p>The repository has automated Chromium interaction/accessibility tests and responsive checks. This does not establish cross-browser or WCAG conformance. Test your own content with keyboard navigation, zoom, assistive technology, forced colors, and your browser support matrix. CSS cannot make bad semantics or broken application behavior accessible.</p><p>This is a <strong>0.1 prototype</strong>: useful and testable, but not a mature replacement for every Pico feature. There is no switch component, tooltip abstraction, framework adapter, scoped mode, or drop-in migration shim.</p></section>
+  </main>
+  <footer class="site-footer"><a class="wordmark" href="../index.html">sprig <span aria-hidden="true">✳</span></a><p>Keep the good bones. Grow something new.</p><div><a href="../README.md">README</a> / <a href="../data/contract.json">Contract</a> / <a href="../LICENSE">MIT</a></div></footer>
+</body>
+</html>
