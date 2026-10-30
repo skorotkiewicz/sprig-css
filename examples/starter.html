@@ -14,7 +14,7 @@
     <section aria-labelledby="intro"><h1 id="intro">Hello, good things.</h1><p>Real HTML. A little CSS. Your next good idea.</p></section>
     <section class="grid" aria-label="Starter examples">
       <article><h2>Start with meaning.</h2><p>This card is an <code>&lt;article&gt;</code>. The grid is one of just seven layout and accessibility classes.</p><details><summary>Make it yours</summary><p>Set <code>--sprig-accent</code> and <code>--sprig-on-accent</code> in your application stylesheet. Check contrast in both themes.</p></details></article>
-      <article><h2>A simple form</h2><form id="starter-form"><label for="name">Your name</label><input id="name" name="name" autocomplete="name" placeholder="Garden enthusiast" required><button type="submit">Try it out</button><p id="status" role="status"></p></form></article>
+      <article><h2>A simple form</h2><form id="starter-form"><label for="name">Your name</label><input id="name" name="name" autocomplete="name" placeholder="Garden enthusiast" required><button id="starter-submit" type="submit" disabled>Try it out</button><p id="status" role="status"></p></form></article>
     </section>
   </main>
   <footer><small>No data is sent. No JavaScript is needed for styling. This example uses a few lines to handle its demo form.</small></footer>
@@ -23,6 +23,7 @@
       event.preventDefault();
       document.querySelector('#status').textContent = 'Hello! Your page is ready to grow. Nothing was sent.';
     });
+    document.querySelector('#starter-submit').disabled = false;
   </script>
 </body>
 </html>

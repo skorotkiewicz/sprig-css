@@ -23,17 +23,23 @@ gardenForm?.addEventListener('submit', event => {
   event.preventDefault();
   document.querySelector('#garden-status').textContent = 'A good little beginning. Demo complete—nothing was sent or stored.';
 });
+const gardenSubmit = document.querySelector('#garden-submit');
+if (gardenSubmit) gardenSubmit.disabled = false;
 
 const dialog = document.querySelector('#garden-dialog');
-document.querySelector('#open-dialog')?.addEventListener('click', () => dialog.showModal());
+const dialogTrigger = document.querySelector('#open-dialog');
+if (dialogTrigger && typeof dialog?.showModal === 'function') {
+  dialogTrigger.addEventListener('click', () => dialog.showModal());
+  dialogTrigger.disabled = false;
+}
 
-if (!('popover' in HTMLElement.prototype)) {
+if ('showPopover' in HTMLElement.prototype && 'popoverTargetElement' in HTMLButtonElement.prototype) {
   const trigger = document.querySelector('#popover-trigger');
   const fallback = document.querySelector('#popover-fallback');
   const note = document.querySelector('#garden-note');
-  if (trigger) trigger.hidden = true;
-  if (note) note.hidden = true;
-  if (fallback) fallback.hidden = false;
+  if (trigger) trigger.hidden = false;
+  if (note) note.hidden = false;
+  if (fallback) fallback.hidden = true;
 }
 
 document.querySelector('#copy-starter')?.addEventListener('click', async () => {

@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-import { readFile, mkdir, writeFile, realpath } from 'node:fs/promises';
+import { readFile, mkdir, writeFile, realpath, stat } from 'node:fs/promises';
 import { dirname, resolve } from 'node:path';
 import { compile, contract, searchRecipes } from '../lib/core.js';
 import { checkHTML } from '../lib/html.js';
