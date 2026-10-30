@@ -17,11 +17,11 @@ const server = createServer(async (request, response) => {
     if (!publicRoots.has(parts[0]) || parts.some(part => part.startsWith('.') || part.includes('\\'))) throw new Error('Not public');
     let file = await realpath(resolve(root, ...parts));
     if (!file.startsWith(root)) throw new Error('Outside root');
-    // A symlink into a private folder is private too.
-    const relative = file.slice(root.length).split(sep);
-    if (!publicRoots.has(relative[0]) || relative.some(part => part.startsWith('.'))) throw new Error('Not public');
+    // Resolve a directory index before applying the final public-path check.
     if ((await stat(file)).isDirectory()) file = await realpath(resolve(file, 'index.html'));
     if (!file.startsWith(root)) throw new Error('Outside root');
+    const relative = file.slice(root.length).split(sep);
+    if (!publicRoots.has(relative[0]) || relative.some(part => part.startsWith('.'))) throw new Error('Not public');
     const body = await readFile(file);
     response.writeHead(200, { 'Content-Type': `${mime[extname(file)] ?? 'text/plain'}; charset=utf-8`, 'Cache-Control': 'no-store', 'X-Content-Type-Options': 'nosniff' });
     response.end(request.method === 'HEAD' ? undefined : body);

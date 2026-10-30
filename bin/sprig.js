@@ -55,7 +55,11 @@ async function main(argv) {
     // Even --force must not turn an HTML input into CSS.
     const actualOut = await realpath(out).catch(error => { if (error.code === 'ENOENT') return out; throw error; });
     const inputs = await Promise.all(options.html.map(file => realpath(file)));
-    if (inputs.includes(actualOut)) throw new Error('Output must not overwrite an HTML input.');
+    const outputInfo = await stat(out).catch(error => { if (error.code === 'ENOENT') return null; throw error; });
+    const inputInfo = await Promise.all(options.html.map(file => stat(file)));
+    if (inputs.includes(actualOut) || inputInfo.some(info => outputInfo && info.dev === outputInfo.dev && info.ino === outputInfo.ino)) {
+      throw new Error('Output must not overwrite an HTML input.');
+    }
     await mkdir(dirname(out), { recursive: true });
     await writeFile(out, result.css, { flag: options.force ? 'w' : 'wx' });
     const report = { output: out, modules: result.modules, bytes: result.bytes };
