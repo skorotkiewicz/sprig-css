@@ -32,7 +32,7 @@
     "data-anchor": [""],
     "data-anchored": [""]
   },
-  "tokens": ["bg", "surface", "soft", "text", "muted", "line", "control", "accent", "on-accent", "danger", "focus", "radius", "space", "width", "font", "mono"],
+  "tokens": ["bg", "surface", "soft", "text", "muted", "line", "control", "accent", "on-accent", "danger", "focus", "radius", "space", "width", "column", "font", "mono"],
   "rules": [
     "Use semantic HTML before adding classes.",
     "Use real buttons for actions and links for navigation.",

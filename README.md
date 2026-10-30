@@ -84,7 +84,7 @@ Use real `button` elements for actions and links for navigation. `article` style
 }
 ```
 
-Set `data-theme="light"` or `"dark"` on `html`; remove it for OS preference. Override `--sprig-accent` and `--sprig-on-accent` together, separately for light/dark/automatic modes, and check contrast. See [the guide](docs/guide.html#themes) for a complete example and all 16 tokens.
+Set `data-theme="light"` or `"dark"` on `html`; remove it for OS preference. Override `--sprig-accent` and `--sprig-on-accent` together, separately for light/dark/automatic modes, and check contrast. See [the guide](docs/guide.html#themes) for a complete example and all 17 tokens.
 
 ## The agent half
 
