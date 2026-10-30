@@ -15,7 +15,7 @@
     :where(body > header, body > main, body > footer, .container) { inline-size: calc(100% - 2rem); }
   }
   @media print {
-    :root { --sprig-bg: white; --sprig-text: black; --sprig-surface: white; --sprig-muted: #444; --sprig-accent: #222; }
+    :root { color-scheme: light; --sprig-bg: white; --sprig-surface: white; --sprig-soft: #f0f0f0; --sprig-text: black; --sprig-muted: #444; --sprig-accent: #222; --sprig-on-accent: white; --sprig-line: #ccc; --sprig-control: #555; --sprig-danger: #922; --sprig-focus: #222; }
     body > main { inline-size: 100%; }
     .skip-link { display: none; }
     :where(article, pre, blockquote) { break-inside: avoid; }

@@ -23,7 +23,7 @@ h1 { font-size: clamp(3.2rem, 5.7vw, 5.4rem); line-height: 1.04; letter-spacing:
 .text-link span { margin-inline-start: .5rem; }
 .hero-footnote { margin-block: 1.4rem 0; font: .65rem/1.8 var(--sprig-mono); color: var(--sprig-muted); }
 .specimen-wrap { position: relative; max-inline-size: 26.5rem; inline-size: 100%; justify-self: end; padding-block: 1.5rem; }
-.specimen-wrap::before { content: ""; position: absolute; z-index: -1; inset: 2.5rem -1rem .5rem 1rem; border: 1px solid var(--sprig-line); border-radius: .75rem; transform: rotate(3deg); background: var(--sprig-soft); }
+.specimen-wrap::before { content: ""; position: absolute; z-index: -1; inset-block: 2.5rem .5rem; inset-inline: 1rem -1rem; border: 1px solid var(--sprig-line); border-radius: .75rem; transform: rotate(3deg); background: var(--sprig-soft); }
 .specimen-note { position: absolute; inset-block-start: -1rem; inset-inline-start: 1rem; color: var(--sprig-muted); font: italic .8rem Georgia, serif; transform: rotate(-3deg); }
 .specimen-note span { display: inline-block; font-size: 1.8rem; vertical-align: middle; margin-inline-end: .4rem; }
 .specimen { padding: 1.65rem 2rem; box-shadow: 0 10px 24px rgb(22 43 15 / .035); }

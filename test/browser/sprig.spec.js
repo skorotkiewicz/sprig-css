@@ -51,6 +51,7 @@ test('native disclosure, modal focus, escape, return focus and close action work
   await trigger.click();
   const dialog = page.getByRole('dialog', { name: 'Hello, breathing room.' });
   await expect(dialog).toBeVisible();
+  expect((await axe(page)).violations).toEqual([]);
   await expect(page.getByRole('button', { name: 'Back to the garden' })).toBeFocused();
   // Native sequential focus may visit browser chrome between wrapping; background controls remain inert.
   await page.locator('#garden-email').evaluate(input => input.focus());
@@ -74,6 +75,7 @@ test('native popover stays closed until invoked and supports dismissal', async (
   await expect(popover).not.toBeVisible();
   await page.getByRole('button', { name: 'A small observation' }).click();
   await expect(popover).toBeVisible();
+  expect((await axe(page)).violations).toEqual([]);
   await page.keyboard.press('Escape');
   await expect(popover).not.toBeVisible();
   await page.getByRole('button', { name: 'A small observation' }).click();
@@ -95,6 +97,19 @@ test('theme control persists explicit choices and respects the OS in system mode
   await expect(page.locator('html')).toHaveCSS('color-scheme', 'dark');
   await page.locator('#theme-toggle').click();
   await expect(page.locator('html')).not.toHaveAttribute('data-theme');
+});
+
+test('copy action reports both success and unavailable clipboard clearly', async ({ page, context }) => {
+  await context.grantPermissions(['clipboard-read', 'clipboard-write']);
+  await page.goto('/');
+  await page.locator('#copy-starter').click();
+  await expect(page.locator('#copy-status')).toHaveText('Copied. Plant it somewhere good.');
+  expect(await page.evaluate(() => navigator.clipboard.readText())).toContain('<main>');
+  await page.evaluate(() => {
+    navigator.clipboard.writeText = async () => { throw new Error('Unavailable'); };
+  });
+  await page.locator('#copy-starter').click();
+  await expect(page.locator('#copy-status')).toContainText('Select and copy the code above');
 });
 
 test('skip navigation is revealed and transfers focus to main content', async ({ page }) => {
@@ -147,7 +162,8 @@ test('reduced motion suppresses busy animation and RTL layout remains usable', a
   expect(parseFloat(duration)).toBeLessThan(.001);
   await page.locator('html').evaluate(html => html.dir = 'rtl');
   await page.setViewportSize({ width: 390, height: 900 });
-  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1)).toBe(true);
+  // Viewport acknowledgement can precede responsive style recalculation.
+  await expect.poll(() => page.evaluate(() => document.documentElement.scrollWidth - innerWidth)).toBeLessThanOrEqual(1);
   await expect(page.locator('#garden-email')).toBeVisible();
 });
 
@@ -193,6 +209,15 @@ test('empty state recipe adds text safely, cancels, and restores focus', async (
   await page.locator('#notes-add').click();
   await page.locator('#notes-cancel').click();
   await expect(page.locator('#notes-form')).toBeHidden();
+});
+
+test('print media stays legible even when the OS prefers dark', async ({ page }) => {
+  await page.goto('/docs/guide.html');
+  await page.emulateMedia({ media: 'print', colorScheme: 'dark' });
+  await expect(page.locator('html')).toHaveCSS('color-scheme', 'light');
+  await expect(page.locator('html')).toHaveCSS('background-color', 'rgb(255, 255, 255)');
+  await expect(page.locator('pre').first()).toHaveCSS('color', 'rgb(0, 0, 0)');
+  await expect(page.locator('pre').first()).toHaveCSS('background-color', 'rgb(240, 240, 240)');
 });
 
 test('local preview serves public routes but not private files or unsupported methods', async ({ request }) => {
