@@ -52,8 +52,13 @@ test('native disclosure, modal focus, escape, return focus and close action work
   const dialog = page.getByRole('dialog', { name: 'Hello, breathing room.' });
   await expect(dialog).toBeVisible();
   await expect(page.getByRole('button', { name: 'Back to the garden' })).toBeFocused();
+  // Native sequential focus may visit browser chrome between wrapping; background controls remain inert.
+  await page.locator('#garden-email').evaluate(input => input.focus());
+  await expect(page.getByRole('button', { name: 'Back to the garden' })).toBeFocused();
   await page.keyboard.press('Tab');
-  expect(await page.evaluate(() => document.activeElement.closest('dialog') !== null)).toBe(true);
+  await expect(page.locator('#garden-email')).not.toBeFocused();
+  await page.keyboard.press('Tab');
+  await expect(page.getByRole('button', { name: 'Back to the garden' })).toBeFocused();
   await page.keyboard.press('Escape');
   await expect(dialog).not.toBeVisible();
   await expect(trigger).toBeFocused();
